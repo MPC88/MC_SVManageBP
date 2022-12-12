@@ -343,10 +343,12 @@ namespace MC_SVManageBP
 
         private void LoadButton_Click()
         {
-            if (weaponCrafting == null)
+            if (weaponCrafting == null)      
+                return;
+
+            if (selectedIndex < 0)
             {
-                if (selectedIndex < 0)
-                    InfoPanelControl.inst.ShowWarning("No blueprint selected.", 1, false);
+                InfoPanelControl.inst.ShowWarning("No blueprint selected.", 1, false);
                 return;
             }
 
