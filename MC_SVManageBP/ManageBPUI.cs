@@ -427,6 +427,7 @@ namespace MC_SVManageBP
             RefreshSavedBPList();
             RefreshSelectedBPContent();
             confirmDialog.SetActive(false);
+            Main.loadedBPIndex = Main.noBPLoaded;
         }
 
         private class ListItemData:MonoBehaviour
