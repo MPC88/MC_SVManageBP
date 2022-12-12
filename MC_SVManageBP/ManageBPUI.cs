@@ -242,7 +242,10 @@ namespace MC_SVManageBP
                 GameObject.Destroy(selectedBPContent.GetChild(i).gameObject);
 
             if (selectedIndex < 0)
+            {
+                selectedBPName.text = "";
                 return;
+            }
 
             PersistentData.Blueprint bp = Main.data.blueprints[selectedIndex];
 
