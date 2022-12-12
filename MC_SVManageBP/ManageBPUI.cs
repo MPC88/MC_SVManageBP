@@ -79,14 +79,9 @@ namespace MC_SVManageBP
 
             // Core filter            
             Dropdown coreFilterList = actualMainPanel.Find("Left").Find("mc_savebpCoreFilter").gameObject.GetComponent<Dropdown>();
-            foreach (WeaponComponent wepComponent in AccessTools.StaticFieldRefAccess<List<WeaponComponent>>(typeof(Crafting), "weaponComponents"))
-            {
-                if (wepComponent.componentName.ToLower().Contains("core"))
-                {
-                    PersistentData.Blueprint.coreIds.Add(wepComponent.id);
-                    coreFilterList.options.Add(new Dropdown.OptionData(wepComponent.componentName));
-                }
-            }
+                        
+            foreach (int id in PersistentData.Blueprint.coreIds)
+                coreFilterList.options.Add(new Dropdown.OptionData(Crafting.GetWeaponComponent(id).componentName));
 
             Dropdown.DropdownEvent filterChangeEvent = new Dropdown.DropdownEvent();
             filterChangeEvent.AddListener(new UnityAction<int>(delegate (int i)
