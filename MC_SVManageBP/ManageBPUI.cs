@@ -415,7 +415,6 @@ namespace MC_SVManageBP
             if(confirmDialog.activeSelf)
                 confirmDialog.SetActive(false);
 
-            PersistentData.SaveData(Main.data);
             RefreshSavedBPList();
             RefreshSelectedBPContent();
         }
@@ -423,7 +422,6 @@ namespace MC_SVManageBP
         private void ConfirmDialogDeleteButton_Click()
         {
             Main.data.blueprints.RemoveAt(selectedIndex);
-            PersistentData.SaveData(Main.data);
             RefreshSavedBPList();
             RefreshSelectedBPContent();
             confirmDialog.SetActive(false);

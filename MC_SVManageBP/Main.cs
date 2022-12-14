@@ -51,6 +51,13 @@ namespace MC_SVManageBP
             data = PersistentData.LoadData(GameData.gameFileIndex.ToString("00"));
         }
 
+        [HarmonyPatch(typeof(GameData), nameof(GameData.SaveGame))]
+        [HarmonyPrefix]
+        private static void GameDataSaveGame_Pre()
+        {
+            PersistentData.SaveData(data);
+        }
+
         [HarmonyPatch(typeof(DockingUI), nameof(DockingUI.OpenPanel))]
         [HarmonyPostfix]
         private static void DockingUIOpenPanel_Post(WeaponCrafting ___weaponCrafting, int code)
@@ -101,7 +108,7 @@ namespace MC_SVManageBP
             if (loadedBPIndex == noBPLoaded)
                 return;
 
-            data.blueprints[loadedBPIndex].weaponIDs.Add(GameData.data.weaponList.Count - 1);
+            //data.blueprints[loadedBPIndex].weaponIDs.Add(GameData.data.weaponList.Count - 1);
         }
     }
 }
