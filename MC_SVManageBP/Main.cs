@@ -11,7 +11,7 @@ namespace MC_SVManageBP
         // BepInEx
         public const string pluginGuid = "mc.starvalor.managebp";
         public const string pluginName = "SV Manage BP";
-        public const string pluginVersion = "1.0.2";
+        public const string pluginVersion = "1.0.3";
 
         // Star Valor
         private const int craftingPanelCode = 4;
@@ -36,7 +36,7 @@ namespace MC_SVManageBP
             GameObject pack = assets.LoadAsset<GameObject>("Assets/mc_managebp.prefab");
 
             ManageBPUI ui = new ManageBPUI(
-                pack.transform.Find("mc_savebpCanvas").Find("mc_savebpMainPanel").gameObject,
+                pack.transform.Find("mc_savebpMainPanel").gameObject,
                 pack.transform.Find("mc_savebpConfirmDlg").gameObject,
                 pack.transform.Find("mc_savebpListItem").gameObject,
                 pack.transform.Find("mc_savebpManageBPBtn").gameObject);
@@ -108,7 +108,7 @@ namespace MC_SVManageBP
             if (loadedBPIndex == noBPLoaded)
                 return;
 
-            //data.blueprints[loadedBPIndex].weaponIDs.Add(GameData.data.weaponList.Count - 1);
+            data.blueprints[loadedBPIndex].weaponIDs.Add(GameData.data.weaponList.Count - 1);
         }
     }
 }
