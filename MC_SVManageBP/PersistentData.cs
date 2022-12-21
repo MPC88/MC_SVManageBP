@@ -85,7 +85,7 @@ namespace MC_SVManageBP
             [NonSerialized]
             internal static List<int> coreIds = new List<int>() { 0,1,2,3,4,5,6,7,8,9,10,11,16,17,18,21 };
 
-            internal string name;
+            public string name;
             internal int core;
             public List<SelectedItems> components;
             public List<SelectedItems> modifiers;
