@@ -11,16 +11,16 @@ namespace MC_SVManageBP
         // BepInEx
         public const string pluginGuid = "mc.starvalor.managebp";
         public const string pluginName = "SV Manage BP";
-        public const string pluginVersion = "1.0.3";
+        public const string pluginVersion = "1.0.5";
 
         // Star Valor
         private const int craftingPanelCode = 4;
 
-        // Mod        
-        internal const int noBPLoaded = -1;
+        // Mod
+        public const int noBPLoaded = -1;
         internal static ManageBPUI ui;
-        internal static PersistentData data;
-        internal static int loadedBPIndex = noBPLoaded;
+        public static PersistentData data;
+        public static int loadedBPIndex = noBPLoaded;
 
         public void Awake()
         {

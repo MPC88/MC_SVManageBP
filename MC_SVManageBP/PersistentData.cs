@@ -9,14 +9,14 @@ using UnityEngine.UI;
 namespace MC_SVManageBP
 {
     [Serializable]
-    internal class PersistentData
+    public class PersistentData
     {
         [NonSerialized]
         private const string modSaveFolder = "/MCSVSaveData/";  // /SaveData/ sub folder
         [NonSerialized]
         private const string modSaveFilePrefix = "ManageBP_"; // modSaveFilePrefixNN.dat
 
-        internal List<Blueprint> blueprints;
+        public List<Blueprint> blueprints;
 
         internal PersistentData()
         {
@@ -80,7 +80,7 @@ namespace MC_SVManageBP
         }
 
         [Serializable]
-        internal class Blueprint
+        public class Blueprint
         {
             [NonSerialized]
             internal static List<int> coreIds = new List<int>() { 0,1,2,3,4,5,6,7,8,9,10,11,16,17,18,21 };
@@ -89,7 +89,7 @@ namespace MC_SVManageBP
             internal int core;
             internal List<SelectedItems> components;
             internal List<SelectedItems> modifiers;
-            internal List<int> weaponIDs;
+            public List<int> weaponIDs;
 
             internal Blueprint()
             {
