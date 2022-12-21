@@ -87,8 +87,8 @@ namespace MC_SVManageBP
 
             internal string name;
             internal int core;
-            internal List<SelectedItems> components;
-            internal List<SelectedItems> modifiers;
+            public List<SelectedItems> components;
+            public List<SelectedItems> modifiers;
             public List<int> weaponIDs;
 
             internal Blueprint()

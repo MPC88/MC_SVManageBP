@@ -348,7 +348,7 @@ namespace MC_SVManageBP
             }
 
             AccessTools.FieldRefAccess<WeaponCrafting, List<SelectedItems>>("currComponents")(weaponCrafting) = Main.data.blueprints[selectedIndex].components;
-            AccessTools.FieldRefAccess<WeaponCrafting, List<SelectedItems>>("currModifiers")(weaponCrafting) = Main.data.blueprints[selectedIndex].modifiers;                                  
+            AccessTools.FieldRefAccess<WeaponCrafting, List<SelectedItems>>("currModifiers")(weaponCrafting) = Main.data.blueprints[selectedIndex].modifiers;
             AccessTools.Method(typeof(WeaponCrafting), "CalculateAll", new System.Type[] { typeof(bool) }).Invoke(weaponCrafting, new object[] { true });
             AccessTools.FieldRefAccess<InputField>(typeof(WeaponCrafting), "resultWeaponName")(weaponCrafting).text = Main.data.blueprints[selectedIndex].name;
 
