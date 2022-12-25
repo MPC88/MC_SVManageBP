@@ -11,7 +11,7 @@ namespace MC_SVManageBP
         // BepInEx
         public const string pluginGuid = "mc.starvalor.managebp";
         public const string pluginName = "SV Manage BP";
-        public const string pluginVersion = "1.0.5";
+        public const string pluginVersion = "1.0.6";
 
         // Star Valor
         private const int craftingPanelCode = 4;
