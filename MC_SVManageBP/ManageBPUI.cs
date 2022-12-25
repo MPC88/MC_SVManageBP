@@ -426,6 +426,8 @@ namespace MC_SVManageBP
         {
             if(Main.loadedBPIndex == selectedIndex)
                 Main.loadedBPIndex = Main.noBPLoaded;
+            else if(Main.loadedBPIndex > selectedIndex)
+                Main.loadedBPIndex--;
 
             Main.data.blueprints.RemoveAt(selectedIndex);
             RefreshSavedBPList();
