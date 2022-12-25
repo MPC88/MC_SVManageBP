@@ -347,10 +347,10 @@ namespace MC_SVManageBP
                 return;
             }
 
-            AccessTools.FieldRefAccess<WeaponCrafting, List<SelectedItems>>("currComponents")(weaponCrafting) = Main.data.blueprints[selectedIndex].components;
-            AccessTools.FieldRefAccess<WeaponCrafting, List<SelectedItems>>("currModifiers")(weaponCrafting) = Main.data.blueprints[selectedIndex].modifiers;
+            AccessTools.FieldRefAccess<WeaponCrafting, List<SelectedItems>>("currComponents")(weaponCrafting) = new List<SelectedItems>(Main.data.blueprints[selectedIndex].components);
+            AccessTools.FieldRefAccess<WeaponCrafting, List<SelectedItems>>("currModifiers")(weaponCrafting) = new List<SelectedItems>(Main.data.blueprints[selectedIndex].modifiers);
             AccessTools.Method(typeof(WeaponCrafting), "CalculateAll", new System.Type[] { typeof(bool) }).Invoke(weaponCrafting, new object[] { true });
-            AccessTools.FieldRefAccess<InputField>(typeof(WeaponCrafting), "resultWeaponName")(weaponCrafting).text = Main.data.blueprints[selectedIndex].name;
+            AccessTools.FieldRefAccess<InputField>(typeof(WeaponCrafting), "resultWeaponName")(weaponCrafting).text = new string(Main.data.blueprints[selectedIndex].name.ToCharArray());
 
             Main.loadedBPIndex = selectedIndex;
             mainPanel.SetActive(false);
@@ -410,7 +410,10 @@ namespace MC_SVManageBP
                 Main.data.blueprints[selectedIndex].core = bp.core;
             }
 
-            Main.loadedBPIndex = Main.data.blueprints.IndexOf(bp);
+            if (selectedIndex != newBPIndex)
+                Main.loadedBPIndex = selectedIndex;
+            else
+                Main.loadedBPIndex = Main.data.blueprints.Count - 1;
 
             if(confirmDialog.activeSelf)
                 confirmDialog.SetActive(false);
@@ -421,11 +424,13 @@ namespace MC_SVManageBP
 
         private void ConfirmDialogDeleteButton_Click()
         {
+            if(Main.loadedBPIndex == selectedIndex)
+                Main.loadedBPIndex = Main.noBPLoaded;
+
             Main.data.blueprints.RemoveAt(selectedIndex);
             RefreshSavedBPList();
             RefreshSelectedBPContent();
-            confirmDialog.SetActive(false);
-            Main.loadedBPIndex = Main.noBPLoaded;
+            confirmDialog.SetActive(false);            
         }
 
         private class ListItemData:MonoBehaviour

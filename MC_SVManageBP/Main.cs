@@ -103,12 +103,12 @@ namespace MC_SVManageBP
 
         [HarmonyPatch(typeof(WeaponCrafting), nameof(WeaponCrafting.BuildWeapon))]
         [HarmonyPostfix]
-        private static void WeaponCraftingBuild_Post()
+        private static void WeaponCraftingBuild_Post(WeaponCrafting __instance)
         {
             if (loadedBPIndex == noBPLoaded)
                 return;
 
-            data.blueprints[loadedBPIndex].weaponIDs.Add(GameData.data.weaponList.Count - 1);
+            data.blueprints[loadedBPIndex].weaponIDs.Add(GameData.data.weaponList[GameData.data.weaponList.Count - 1].index);            
         }
     }
 }
