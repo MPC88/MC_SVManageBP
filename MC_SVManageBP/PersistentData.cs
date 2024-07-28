@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -76,6 +77,17 @@ namespace MC_SVManageBP
             {
                 if(fileStream != null)
                     fileStream.Close();
+            }
+        }
+
+        [HarmonyPatch(typeof(MenuControl), nameof(MenuControl.DeleteSaveGame))]
+        [HarmonyPrefix]
+        private static void DeleteSave_Pre()
+        {
+            if (GameData.ExistsAnySaveFile(GameData.gameFileIndex) &&
+                File.Exists(Application.dataPath + GameData.saveFolderName + modSaveFolder + modSaveFilePrefix + GameData.gameFileIndex.ToString("00") + ".dat"))
+            {
+                File.Delete(Application.dataPath + GameData.saveFolderName + modSaveFolder + modSaveFilePrefix + GameData.gameFileIndex.ToString("00") + ".dat");
             }
         }
 
